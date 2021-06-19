@@ -12,7 +12,7 @@ Output: Because nums[0] + nums[1] == 9, we return [0, 1].
 
 let nums = [2, 7, 11, 15], tgt = 9;
 
-console.log(twoSum([3,2,4], 6));
+//console.log(twoSum([3,2,4], 6));
 
 function twoSum(numbs, target) {
     let sCount = 0, indices = [], isDone = true;
@@ -31,4 +31,18 @@ function twoSum(numbs, target) {
         sCount++
     }
     return indices;
+}
+
+console.log(tester([3, 6, 7, 3, 1, 4], 11));
+
+function tester(numbs, target){
+    let map = new Map();
+    for(let n in numbs)
+        map.set(numbs[n], n);
+
+    for(let i in numbs){
+        let complement = target - numbs[i];
+        if(map.has(complement) && map.get(complement) != i)
+            return [i, map.get(complement)]
+    }
 }
